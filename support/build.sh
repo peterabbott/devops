@@ -1,4 +1,4 @@
-#!/bin/bash  -x
+#!/bin/bash -e 
 
 IMAGE_ID=$1
 LOCAL_DIR=$2
@@ -16,5 +16,6 @@ if [[ "$LOCAL_DIR" != /* ]]; then
 elif  [[ "$LOCAL_DIR" = "." ]]; then
   LOCAL_BUILD_ROOT=$(pwd)
 fi
+echo "Using as build root: $LOCAL_BUILD_ROOT"
 
-echo docker -it --rm $IMAGE_ID -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR bash -c "$BUILD_CMD"
+docker -it --rm $IMAGE_ID -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR bash -c "$BUILD_CMD"
