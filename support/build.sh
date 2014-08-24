@@ -18,4 +18,4 @@ elif  [[ "$LOCAL_DIR" = "." ]]; then
 fi
 echo "Using as build root: $LOCAL_BUILD_ROOT"
 
-docker -it --rm $IMAGE_ID -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR bash -c "$BUILD_CMD"
+docker build -it --rm $IMAGE_ID -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR bash -c "$BUILD_CMD"
