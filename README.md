@@ -1,4 +1,3 @@
 devops
 ======
-
-My Devops Stuff
+Playground for testing CI build systems 
