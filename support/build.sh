@@ -17,10 +17,10 @@ elif  [[ "$LOCAL_DIR" = "." ]]; then
   LOCAL_BUILD_ROOT=$(pwd)
 fi
 echo "Using as build root: $LOCAL_BUILD_ROOT"
-echo Going to run: docker run -i -t --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c \"$BUILD_CMD\"
-docker run -i -t --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c "$BUILD_CMD"
+echo Going to run: docker run --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c \"$BUILD_CMD\"
+docker run -a stdout --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c "$BUILD_CMD"
 RETVAL=$?
 
-echo "Done"
+echo "Done - $RETVAL"
 
 exit $RETVAL
