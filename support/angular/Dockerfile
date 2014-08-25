@@ -9,7 +9,7 @@ ENV LANG en_GB.utf8
 ENV LANGUAGE en_GB.utf8
 
 RUN sudo apt-get update
-RUN sudo apt-get install -y python git ruby-full rubygems npm 
+RUN sudo apt-get install -y python git ruby1.9.3 npm 
 RUN sudo gem install sass compass
 
 
