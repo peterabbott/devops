@@ -13,4 +13,3 @@ RUN apt-get update
 
 RUN apt-get install -y maven
 
-RUN useradd -U -c "build user" -m go 
