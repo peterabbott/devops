@@ -16,9 +16,14 @@ if [[ "$LOCAL_DIR" != /* ]]; then
 elif  [[ "$LOCAL_DIR" = "." ]]; then
   LOCAL_BUILD_ROOT=$(pwd)
 fi
-echo "Using as build root: $LOCAL_BUILD_ROOT"
-echo Going to run: docker run --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c \"$BUILD_CMD\"
-docker run -a stdout -u $(whoami) --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c "$BUILD_CMD"
+
+[ -z "$BUILD_USER" ] && BUILD_USER=$(whoami)
+
+echo "Using as build root directory: $LOCAL_BUILD_ROOT"
+echo "Running build as user: $BUILD_USER"
+EXEC_CMD="docker run -a stderr -a stdout -u $BUILD_USER --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c \"$BUILD_CMD\""
+echo "Running with command: $EXEC_CMD"
+eval $EXEC_CMD
 RETVAL=$?
 
 echo "Done - $RETVAL"
