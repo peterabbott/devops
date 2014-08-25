@@ -18,6 +18,7 @@ elif  [[ "$LOCAL_DIR" = "." ]]; then
 fi
 
 [ -z "$BUILD_USER" ] && BUILD_USER=$(whoami)
+LOCAL_HOME_DIR=~$BUILD_USER
 
 echo "Using as build root directory: $LOCAL_BUILD_ROOT"
 echo "Running build as user: $BUILD_USER"
