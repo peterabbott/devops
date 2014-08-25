@@ -11,6 +11,5 @@ ENV LANGUAGE en_GB.utf8
 RUN sudo apt-get update
 RUN sudo apt-get install -y python git ruby1.9.3 npm 
 RUN gem install sass compass
-RUN npm install -g grunt 
-
+RUN npm install -g grunt-cli
 
