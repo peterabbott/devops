@@ -18,7 +18,7 @@ elif  [[ "$LOCAL_DIR" = "." ]]; then
 fi
 echo "Using as build root: $LOCAL_BUILD_ROOT"
 echo Going to run: docker run --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c \"$BUILD_CMD\"
-docker run -a stdout --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c "$BUILD_CMD"
+docker run -a stdout -u $(whoami) --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR $IMAGE_ID bash -c "$BUILD_CMD"
 RETVAL=$?
 
 echo "Done - $RETVAL"
