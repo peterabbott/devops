@@ -16,3 +16,6 @@ RUN gem install sass compass
 RUN npm install -g grunt-cli
 RUN npm install -g bower 
 
+RUN useradd -m -U angular-builder
+
+USER angular-builder
