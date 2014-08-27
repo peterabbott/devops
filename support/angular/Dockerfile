@@ -19,6 +19,6 @@ RUN npm install -g bower
 VOLUME /opt/build-support
 
 ADD ./run.sh /opt/build-support/
-RUN chmod u+x /opt/build-support/run.sh
+RUN chmod ug+x /opt/build-support/run.sh
 
-ENTRYPOINT  /opt/build-support/run.sh
+#ENTRYPOINT  /opt/build-support/run.sh
