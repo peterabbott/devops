@@ -18,4 +18,6 @@ RUN npm install -g bower
 
 RUN useradd -m -U -G root angular-builder
 
+ENV HOME /home/angular-builder
+
 USER angular-builder
