@@ -31,7 +31,7 @@ EXEC_CMD="docker run -a stderr \
 					 -e HOST_GID=$(id -g) \
 					 -e TARGET_WORK_DIR=$MAPPED_DIR \
 					 $IMAGE_ID \
-					 $BUILD_CMD
+					 $BUILD_CMD"
 					 
 echo "Running with command: $EXEC_CMD"
 eval $EXEC_CMD
