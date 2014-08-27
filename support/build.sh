@@ -22,7 +22,17 @@ LOCAL_HOME_DIR=$(eval echo ~$BUILD_USER)
 
 echo "Using as build root directory: $LOCAL_BUILD_ROOT"
 echo "Running build as user: $BUILD_USER"
-EXEC_CMD="docker run -a stderr -a stdout --rm -v $LOCAL_BUILD_ROOT:$MAPPED_DIR -w $MAPPED_DIR -e HOST_UID=$(id -u) -e HOST_GID=$(id -g) -e TARGET_WORK_DIR=$MAPPED_DIR $IMAGE_ID bash -l -c \"$BUILD_CMD ;RVAL=$?;chown -R \\\$HOST_UID:\\\$HOST_GID \\\$TARGET_WORK_DIR/*";exit \$RVAL;"
+EXEC_CMD="docker run -a stderr \
+					 -a stdout \
+					 --rm \
+					 -v $LOCAL_BUILD_ROOT:$MAPPED_DIR \
+					 -w $MAPPED_DIR \
+					 -e HOST_UID=$(id -u) \
+					 -e HOST_GID=$(id -g) \
+					 -e TARGET_WORK_DIR=$MAPPED_DIR \
+					 $IMAGE_ID \
+					 $BUILD_CMD
+					 
 echo "Running with command: $EXEC_CMD"
 eval $EXEC_CMD
 RETVAL=$?
