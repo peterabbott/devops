@@ -9,9 +9,12 @@ fi
 if [ ! -z "$HOST_UID" ] && [ ! -z "$HOST_GID" ]; then 
   BUILDER_USER=builder
 
-  echo "Setting up HOST user"
+  echo "Setting up HOST user with ($HOST_UID:$HOST_GID)"
+
   groupadd -g $HOST_GID $BUILDER_USER 
-  useradd -U -u $HOST_UID -g $HOST_GID $BUILDER_USER 
+  useradd -m -u $HOST_UID -g $HOST_GID $BUILDER_USER
+
+  export HOME=/home/$BUILDER_USER 
 else 
   BUILDER_USER=$(whoami) 
 fi 
