@@ -16,9 +16,7 @@ RUN gem install sass compass
 RUN npm install -g grunt-cli
 RUN npm install -g bower 
 
-VOLUME /opt/build-support
+ADD ./run.sh /usr/local/bin/run.sh
+RUN chmod 0755 /usr/local/bin/run.sh
 
-ADD ./run.sh /opt/build-support/
-RUN chmod 0755 /opt/build-support/run.sh
-
-#ENTRYPOINT  /opt/build-support/run.sh
+#ENTRYPOINT  /usr/local/bin/run.sh
