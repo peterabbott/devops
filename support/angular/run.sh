@@ -2,7 +2,7 @@
 
 BUILD_DIR=$1
 
-if [ -z "$1" ]; 
+if [ -z "$1" ];  then
   BUILD_DIR=/opt/build
 fi
 
